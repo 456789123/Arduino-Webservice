@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="arduinoWeb">
+    <head>
+        <meta charset="UTF-8">
+        <title>Arduino</title>
+
+        <script src="vendor/angular.min.js"></script>
+        <script src="js/modulo.js"></script>
+        <script src="js/arduinoWebCtrl.js"></script>
+        <script src="js/arduinoWebService.js"></script>
+    </head>
+    <body ng-controller="arduinoWebCtrl">
+        <h1>Arduino para automação!!</h1>
+        <div>
+            <h2><label>Temperatura está em {{umidadeTemperatura.temperatura}}° Celsius</label></h2>
+            <h2><label>Umidade do ar está em {{umidadeTemperatura.umidade}}%</label></h2>
+        </div>
+        <div>
+            <input maxlength="32" type="text" ng-model="texto" placeholder="Digite aqui!!">
+            <button ng-click="enviarTexto( )">Enviar Texto</button>
+          </div>
+    </body>
+</html>

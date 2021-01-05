@@ -1,0 +1,25 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "Projeto que serve como base para Internet das Coisas.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/456789123/Arduino-Webservice.git"
+  },
+  "author": "Christiano Reis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/456789123/Arduino-Webservice/issues"
+  },
+  "homepage": "https://github.com/456789123/Arduino-Webservice#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "serialport": "^9.0.4"
+  }
+}

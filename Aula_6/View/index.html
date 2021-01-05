@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="arduinoWeb">
+    <head>
+        <meta charset="UTF-8">
+        <title>Arduino</title>
+        <link rel="icon" type="image/x-icon" href="imagens/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="css_bootstrap/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/css-tela.css">
+        <script src="vendor/angular.min.js"></script>
+        <script src="js/modulo.js"></script>
+        <script src="js/arduinoWebCtrl.js"></script>
+        <script src="js/arduinoWebService.js"></script>
+    </head>
+    <body ng-controller="arduinoWebCtrl">
+        <div style="text-align:center" class="form-group">
+            <div class="caixa-form">
+                <img src="./imagens/favicon.ico" height="50px"><br><br>
+                <div class="container">
+                    <h2><label>Temperatura está em {{umidadeTemperatura.temperatura}}° Celsius</label></h2>
+                    <h2><label>Umidade do ar está em {{umidadeTemperatura.umidade}}%</label></h2>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <input maxlength="32" type="text" ng-model="texto" placeholder="Digite aqui!!" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="buttons">
+                            <input type="button" class="button" ng-click="enviarTexto( )" value="Enviar Texto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
