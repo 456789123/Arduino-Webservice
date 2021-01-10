@@ -1,3 +1,7 @@
-Conectando o Arduino para se comunicar com um Webservice sem o uso de uma shield de rede ou qualquer outra placa. Será usado apenas o Arduino Uno.
+Aqui está demonstrando um prjeto de construção simples para demonstrar um controle via Internet de uma placa Arduino sem usar qualquer outra placa de conexão
+com a rede.
+O esquema do preojeto como pode ser visto abaixo é bem simples, usando um sensor de temperatura e umidade DHT11.
 
-Connecting the Arduino to communicate with a Webservice without the use of a network shield or any other board. Only the Arduino Uno will be used.
+
+<img src="https://github.com/456789123/Arduino-Webservice/blob/master/Esquema_Projeto.png" width="350" alt="accessibility text">
+
