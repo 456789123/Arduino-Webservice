@@ -1,4 +1,6 @@
-<p>Aqui está demonstrando um prjeto de construção simples para demonstrar um controle via Internet de uma placa Arduino sem usar qualquer outra placa de conexão
+<b>Projeto de Automação Simples para Internet das coisas</b>
+
+<p>Aqui está sendo apresentado um projeto de construção simples para demonstrar um controle via Internet de uma placa Arduino sem usar qualquer outra placa de conexão
 com a rede.</p>
 <p>O esquema do preojeto como pode ser visto abaixo é bem simples, usando um sensor de temperatura e umidade DHT11.</p>
 
