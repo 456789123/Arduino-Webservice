@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="arduinoWeb">
+    <head>
+        <meta charset="UTF-8">
+        <title>Arduino</title>
+        <link rel="icon" type="image/x-icon" href="imagens/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="css_bootstrap/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/css-tela.css">
+        <script src="vendor/angular.min.js"></script>
+        <script src="js/modulo.js"></script>
+        <script src="js/arduinoWebCtrl.js"></script>
+        <script src="js/arduinoWebService.js"></script>
+    </head>
+    <body ng-controller="arduinoWebCtrl">
+        <div style="text-align:center" class="form-group">
+            <div class="caixa-form">
+                <img src="./imagens/favicon.ico" height="50px"><br><br>
+                <div class="container">
+                    <h2><label>Temperatura está em {{umidadeTemperatura.temperatura}}° Celsius</label></h2>
+                    <h2><label>Umidade do ar está em {{umidadeTemperatura.umidade}}%</label></h2>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <input maxlength="32" type="text" ng-model="texto" placeholder="Digite aqui!!" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="buttons">
+                            <input type="button" class="button" ng-click="enviarTexto( )" value="Enviar Texto">
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label><h4>LED 1</h4></label><br>
+                            <div class="switch">
+                                <input type="radio" ng-model="led.led1" class="switch-input" name="view1" id="off1" value="0" ng-change="ledOnOff( )">
+                                <label for="off1" class="switch-label switch-label-off">OFF</label>
+                                <input type="radio" ng-model="led.led1" class="switch-input" name="view1" id="on1" value="1" ng-change="ledOnOff( )">
+                                <label for="on1" class="switch-label switch-label-on">ON</label>
+                                <span class="switch-selection"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <label><h4>LED 2</h4></label><br>
+                            <div class="switch">
+                                <input type="radio" ng-model="led.led2" class="switch-input" name="view2" id="off2" value="0" ng-change="ledOnOff( )">
+                                <label for="off2" class="switch-label switch-label-off">OFF</label>
+                                <input type="radio" ng-model="led.led2" class="switch-input" name="view2" id="on2" value="1" ng-change="ledOnOff( )">
+                                <label for="on2" class="switch-label switch-label-on">ON</label>
+                                <span class="switch-selection"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <label><h4>LED 3</h4></label><br>
+                            <div class="switch">
+                                <input type="radio" ng-model="led.led3" class="switch-input" name="view3" id="off3" value="0" ng-change="ledOnOff( )">
+                                <label for="off3" class="switch-label switch-label-off">OFF</label>
+                                <input type="radio" ng-model="led.led3" class="switch-input" name="view3" id="on3" value="1" ng-change="ledOnOff( )">
+                                <label for="on3" class="switch-label switch-label-on">ON</label>
+                                <span class="switch-selection"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <label><h4>LED 4</h4></label><br>
+                            <div class="switch">
+                                <input type="radio" ng-model="led.led4" class="switch-input" name="view4" id="off4" value="0" ng-change="ledOnOff( )">
+                                <label for="off4" class="switch-label switch-label-off">OFF</label>
+                                <input type="radio" ng-model="led.led4" class="switch-input" name="view4" id="on4" value="1" ng-change="ledOnOff( )">
+                                <label for="on4" class="switch-label switch-label-on">ON</label>
+                                <span class="switch-selection"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="col-sm">
+                            <label><h4>Saída PWM</h4></label><br>
+                            <label><h4>{{percente}}%</h4></label><br>
+                            <input type="range" class="pwm-css" name="range" ng-model="pwm" min="0"  max="255" ng-change="funcaoPWM( )">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

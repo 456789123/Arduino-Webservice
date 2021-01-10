@@ -10,10 +10,12 @@
 #define D6 (6)
 #define D7 (7)
 
-#define LED_1 (12)
-#define LED_2 (11)
-#define LED_3 (10)
-#define LED_4 (9)
+#define LED_1 (A2)
+#define LED_2 (A3)
+#define LED_3 (A4)
+#define LED_4 (A5)
+
+#define PWM_PINO (9)
 
 #define DHTPIN A1
 #define DHTTYPE DHT11 // DHT 11
@@ -24,9 +26,10 @@
 
 #define FUCIONALIDADE_1 ("01")
 #define FUCIONALIDADE_2 ("02")
+#define FUCIONALIDADE_3 ("03")
 
 //Tempo de intervalo
-#define TEMPO   (100)
+#define TEMPO   (10)
  
 //Define os pinos que serão utilizados para ligação ao display
 LiquidCrystal lcd(RS, EN, D4, D5, D6, D7);
@@ -37,7 +40,7 @@ DHT dht(DHTPIN, DHTTYPE);
 String texto = "";
 String texto_receive = "";
 boolean abilit_func = false;
-int cont = 0;
+int pwm_valor = 0;
 
 
 static void texto_lcd( )
@@ -73,6 +76,12 @@ static void leds_on_off( )
 
 }
 
+static void pwm_controle( )
+{
+  String numero_pwm_str = texto.substring( 0, 3 );
+  pwm_valor = numero_pwm_str.toInt( );
+}
+
 void setup()
 {
   Serial.begin(9600);
@@ -106,11 +115,12 @@ void setup()
  
 void loop()
 {
-
   // A leitura da temperatura e umidade pode levar 250ms!
   // O atraso do sensor pode chegar a 2 segundos.
   int umidade = dht.readHumidity();
   int temperatura = dht.readTemperature();
+
+  analogWrite( PWM_PINO, pwm_valor );
 
   if (isnan(temperatura) || isnan(umidade)) 
   {
@@ -165,6 +175,7 @@ void serialEvent( )
 
     if( funcionalidade == FUCIONALIDADE_1 ) texto_lcd( );
     if( funcionalidade == FUCIONALIDADE_2 ) leds_on_off( );
+    if( funcionalidade == FUCIONALIDADE_3 ) pwm_controle( );
 
     texto = "";
   }
