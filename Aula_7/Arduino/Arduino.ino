@@ -22,6 +22,9 @@
 #define LIMIT_32 (36)
 #define SHOW_  ('\\')
 
+#define FUCIONALIDADE_1 ("01")
+#define FUCIONALIDADE_2 ("02")
+
 //Tempo de intervalo
 #define TEMPO   (100)
  
@@ -32,7 +35,43 @@ DHT dht(DHTPIN, DHTTYPE);
 
 // Variaveis globais
 String texto = "";
-boolean show_lcd = false;
+String texto_receive = "";
+boolean abilit_func = false;
+int cont = 0;
+
+
+static texto_lcd( )
+{
+  lcd.clear( );
+
+  if( texto.length( ) < LIMIT_16 )
+  {
+    lcd.setCursor(0, 0);
+    lcd.print(texto.substring( 0, 16 ));
+  } else {
+    lcd.setCursor(0, 0);
+    lcd.print(texto.substring( 0, 16 ));
+    lcd.setCursor(0, 1);
+    lcd.print(texto.substring( 16, 32 ));
+  }
+
+}
+
+static leds_on_off( )
+{
+  int i = int(texto.charAt(0));
+  if( i == 48 || i == 49 ) digitalWrite(LED_1, i - 48 );
+
+  i = int(texto.charAt(1));
+  if( i == 48 || i == 49 ) digitalWrite(LED_2, i - 48 );
+
+  i = int(texto.charAt(2));
+  if( i == 48 || i == 49 ) digitalWrite(LED_3, i - 48 );
+
+  i = int(texto.charAt(3));
+  if( i == 48 || i == 49 ) digitalWrite(LED_4, i - 48 );
+
+}
 
 void setup()
 {
@@ -62,6 +101,7 @@ void setup()
   digitalWrite(LED_2, LOW);
   digitalWrite(LED_3, LOW);
   digitalWrite(LED_4, LOW);
+
 }
  
 void loop()
@@ -75,9 +115,7 @@ void loop()
   if (isnan(temperatura) || isnan(umidade)) 
   {
     Serial.println("Failed to read from DHT");
-  } 
-  else
-  {
+  } else {
     Serial.print("-humidit-");
     Serial.print(umidade);
     Serial.print("-temper-");
@@ -94,44 +132,40 @@ void serialEvent( )
   if(Serial.available( ))
   {
     char caracter = Serial.read( );
-    if( caracter == SHOW_ ) show_lcd = true; else
-    if( LIMIT_32 > texto.length( ))
-    {
-      texto += caracter;
-    } else texto = "";
+    if( caracter == SHOW_ ) abilit_func = true;
+    else texto_receive += caracter;
   }
 
-  int i = 0;
-
-  if( i == 48 || i == 49 ) digitalWrite(LED_1, i - 48 );
-
-  if( show_lcd )
+  if( abilit_func )
   {
-    lcd.clear( );
-    show_lcd = false;
+    abilit_func = false;
 
-    i = int(texto.charAt(0));
-    if( i == 48 || i == 49 ) digitalWrite(LED_1, i - 48 );
+    String funcionalidade = "";
 
-    i = int(texto.charAt(1));
-    if( i == 48 || i == 49 ) digitalWrite(LED_2, i - 48 );
-
-    i = int(texto.charAt(2));
-    if( i == 48 || i == 49 ) digitalWrite(LED_3, i - 48 );
-
-    i = int(texto.charAt(3));
-    if( i == 48 || i == 49 ) digitalWrite(LED_4, i - 48 );
-
-    if( texto.length( ) < LIMIT_16 )
+    if( texto_receive.charAt( 0 ) == '0')
     {
-      lcd.setCursor(0, 0);
-      lcd.print(texto.substring( 4, 20 ));
+      funcionalidade.concat(texto_receive.charAt( 0 ));
+      funcionalidade.concat(texto_receive.charAt( 1 ));
+
+      for( int i = 2; i < texto_receive.length( ); i++ )
+      {
+        texto.concat(texto_receive.charAt( i ));
+      }
     } else {
-      lcd.setCursor(0, 0);
-      lcd.print(texto.substring( 4, 20 ));
-      lcd.setCursor(0, 1);
-      lcd.print(texto.substring( 20, 36 ));
+      funcionalidade.concat(texto_receive.charAt( 1 ));
+      funcionalidade.concat(texto_receive.charAt( 2 ));
+
+      for( int i = 3; i < texto_receive.length( ); i++ )
+      {
+        texto.concat(texto_receive.charAt( i ));
+      }
     }
+
+    texto_receive = "";
+
+    if( funcionalidade == FUCIONALIDADE_1 ) texto_lcd( );
+    if( funcionalidade == FUCIONALIDADE_2 ) leds_on_off( );
+
     texto = "";
   }
 }

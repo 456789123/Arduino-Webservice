@@ -56,7 +56,7 @@ port.on( 'data', function( data ) {
 // Envia do Webservice para o Arduino
 app.post('/enviarMensagen', function (req, res) {
     texto = req.body.texto;
-    objetoEnviar = statusLed + texto;
+    objetoEnviar = '01' + texto;
     enviar(objetoEnviar + '\\');
     res.status(200).send( );
 });
@@ -69,7 +69,7 @@ app.post('/statusLed', function (req, res) {
     let led4 = req.body.led4;
 
     statusLed = `${led1}${led2}${led3}${led4}`;
-    objetoEnviar = statusLed + texto;
+    objetoEnviar = '02' + statusLed;
     enviar(objetoEnviar + '\\');
     res.status(200).send( );
 });
