@@ -18,8 +18,8 @@
 #define DHTPIN A1
 #define DHTTYPE DHT11 // DHT 11
 
-#define LIMIT_16 (20)
-#define LIMIT_32 (36)
+#define LIMIT_16 (16)
+#define LIMIT_32 (32)
 #define SHOW_  ('\\')
 
 #define FUCIONALIDADE_1 ("01")
