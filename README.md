@@ -1,4 +1,4 @@
-<b>Projeto de Automação Simples para Internet das coisas</b>
+<h1><b>Projeto de Automação Simples para Internet das coisas</b></h1>
 
 <p>Aqui está sendo apresentado um projeto de construção simples para demonstrar um controle via Internet de uma placa Arduino sem usar qualquer outra placa de conexão
 com a rede.</p>
