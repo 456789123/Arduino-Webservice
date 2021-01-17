@@ -52,15 +52,14 @@ void loop()
     if( texto.length( ) < LIMIT_16 )
     {
       lcd.setCursor(0, 0);
-      lcd.print(texto.substring(0, 15));
-      texto = "";
+      lcd.print(texto.substring(0, 16));
     } else {
       lcd.setCursor(0, 0);
-      lcd.print(texto.substring( 0, 15));
+      lcd.print(texto.substring( 0, 16));
       lcd.setCursor(0, 1);
-      lcd.print(texto.substring(15, 30));
-      texto = "";
+      lcd.print(texto.substring(16, 32));
     }
+    texto = "";
   }
 
 }
