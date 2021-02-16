@@ -1,3 +1,4 @@
+
 //Carrega a biblioteca LiquidCrystal
 #include <LiquidCrystal.h>
 //Carrega a biblioteca DHT11
