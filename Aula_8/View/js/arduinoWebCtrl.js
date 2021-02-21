@@ -21,13 +21,15 @@ angular.module("arduinoWeb").controller("arduinoWebCtrl", function ($scope, ardu
     $scope.funcaoPWM = function( ) {
         $scope.percente = ($scope.pwm*100)/255;
         $scope.percente = parseInt($scope.percente);
-        arduinoWebService.pwmLed(valorPwmString( ));
     }
     
     $interval( function( ) {
 		arduinoWebService.getTemperaturaUmidade( ).then( function(success){
             $scope.umidadeTemperatura.temperatura = success.data.temperatura;
             $scope.umidadeTemperatura.umidade = success.data.umidade;
+
+            arduinoWebService.pwmLed(valorPwmString( ));
+
         }, function(error) {
 		    console.log("Aconteceu um problema!!");
 		});
