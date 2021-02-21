@@ -23,8 +23,8 @@
 #define LIMIT_32 (32)
 #define SHOW_  ('\\')
 
-#define FUCIONALIDADE_1 ("01")
-#define FUCIONALIDADE_2 ("02")
+#define FUNCIONALIDADE_1 ("01")
+#define FUNCIONALIDADE_2 ("02")
 
 //Tempo de intervalo
 #define TEMPO   (100)
@@ -164,8 +164,8 @@ void serialEvent( )
 
     texto_receive = "";
 
-    if( funcionalidade == FUCIONALIDADE_1 ) texto_lcd( );
-    if( funcionalidade == FUCIONALIDADE_2 ) leds_on_off( );
+    if( funcionalidade == FUNCIONALIDADE_1 ) texto_lcd( );
+    if( funcionalidade == FUNCIONALIDADE_2 ) leds_on_off( );
 
     texto = "";
   }
