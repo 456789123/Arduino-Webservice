@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/456789123/Arduino-Webservice#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "serialport": "^9.0.4"
   }
 }
